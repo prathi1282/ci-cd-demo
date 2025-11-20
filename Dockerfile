@@ -1,15 +1,17 @@
-# Use official Python image
-FROM python:3.12-slim
+# Use Python 3.11 slim image
+FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy application files
+# Copy application code
 COPY app/ ./app
 
-# Install dependencies if you have requirements.txt
-# COPY requirements.txt .
-# RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir flask
 
-# Default command
+# Expose port 5000
+EXPOSE 5000
+
+# Run the app
 CMD ["python", "app/main.py"]
